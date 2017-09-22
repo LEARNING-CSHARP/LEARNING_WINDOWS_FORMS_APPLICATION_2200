@@ -13,13 +13,31 @@
 
 		private void displayDirectoriesAndFilesButton_Click(object sender, System.EventArgs e)
 		{
-			pathTextBox.Text =
-				pathTextBox.Text.Trim();
-
-			if (pathTextBox.Text == string.Empty)
+			if (string.IsNullOrWhiteSpace(pathTextBox.Text))
 			{
 				System.Windows.Forms.MessageBox.Show
 					(text: "تکمیل مسیر الزامی است!",
+					caption: "خطا",
+					buttons: System.Windows.Forms.MessageBoxButtons.OK,
+					icon: System.Windows.Forms.MessageBoxIcon.Error,
+					defaultButton: System.Windows.Forms.MessageBoxDefaultButton.Button1,
+					options: System.Windows.Forms.MessageBoxOptions.RightAlign |
+					System.Windows.Forms.MessageBoxOptions.RtlReading);
+
+				pathTextBox.Text = string.Empty;
+
+				pathTextBox.Focus();
+
+				return;
+			}
+
+			pathTextBox.Text =
+				pathTextBox.Text.Trim();
+
+			if (System.IO.Directory.Exists(path: pathTextBox.Text) == false)
+			{
+				System.Windows.Forms.MessageBox.Show
+					(text: "چنین مسیری وجود ندارد!",
 					caption: "خطا",
 					buttons: System.Windows.Forms.MessageBoxButtons.OK,
 					icon: System.Windows.Forms.MessageBoxIcon.Error,
@@ -34,6 +52,37 @@
 
 			DisplayDirectoriesAndFiles();
 		}
+
+		//private void DisplayDirectoriesAndFiles()
+		//{
+		//	try
+		//	{
+		//		System.IO.DirectoryInfo oDirectoryInfo =
+		//			new System.IO.DirectoryInfo(path: pathTextBox.Text);
+
+		//		// **************************************************
+		//		directorieslistBox.Items.Clear();
+
+		//		foreach (System.IO.DirectoryInfo oCurrentDirectoryInfo in oDirectoryInfo.GetDirectories())
+		//		{
+		//			directorieslistBox.Items.Add(oCurrentDirectoryInfo.Name);
+		//		}
+		//		// **************************************************
+
+		//		// **************************************************
+		//		filesListBox.Items.Clear();
+
+		//		foreach (System.IO.FileInfo oCurrentFileInfo in oDirectoryInfo.GetFiles())
+		//		{
+		//			filesListBox.Items.Add(oCurrentFileInfo.Name);
+		//		}
+		//		// **************************************************
+		//	}
+		//	catch (System.Exception ex)
+		//	{
+		//		System.Windows.Forms.MessageBox.Show(ex.Message);
+		//	}
+		//}
 
 		private void directorieslistBox_DoubleClick(object sender, System.EventArgs e)
 		{
@@ -81,6 +130,7 @@
 				// **************************************************
 				directorieslistBox.Items.Clear();
 
+				// اگر در داخل یک پوشه بودیم
 				if (pathTextBox.Text.Length > 3)
 				{
 					directorieslistBox.Items.Add("..");
@@ -95,26 +145,15 @@
 				// **************************************************
 				filesListBox.Items.Clear();
 
-				foreach (System.IO.FileInfo oFileInfo in oDirectoryInfo.GetFiles())
+				foreach (System.IO.FileInfo oCurrentFileInfo in oDirectoryInfo.GetFiles())
 				{
-					filesListBox.Items.Add(oFileInfo.Name);
+					filesListBox.Items.Add(oCurrentFileInfo.Name);
 				}
 				// **************************************************
 			}
-			catch //(System.Exception ex)
+			catch (System.Exception ex)
 			{
-				// ex -> Log
-
-				System.Windows.Forms.MessageBox.Show
-					(text: "لطفا از مسیر درستی استفاده نمایید!",
-					caption: "خطا",
-					buttons: System.Windows.Forms.MessageBoxButtons.OK,
-					icon: System.Windows.Forms.MessageBoxIcon.Error,
-					defaultButton: System.Windows.Forms.MessageBoxDefaultButton.Button1,
-					options: System.Windows.Forms.MessageBoxOptions.RightAlign |
-					System.Windows.Forms.MessageBoxOptions.RtlReading);
-
-				pathTextBox.Focus();
+				System.Windows.Forms.MessageBox.Show(ex.Message);
 			}
 		}
 	}
