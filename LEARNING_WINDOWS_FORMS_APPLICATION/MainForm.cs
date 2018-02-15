@@ -57,24 +57,24 @@
 		//{
 		//	try
 		//	{
-		//		System.IO.DirectoryInfo oDirectoryInfo =
+		//		System.IO.DirectoryInfo directoryInfo =
 		//			new System.IO.DirectoryInfo(path: pathTextBox.Text);
 
 		//		// **************************************************
 		//		directorieslistBox.Items.Clear();
 
-		//		foreach (System.IO.DirectoryInfo oCurrentDirectoryInfo in oDirectoryInfo.GetDirectories())
+		//		foreach (System.IO.DirectoryInfo currentDirectoryInfo in directoryInfo.GetDirectories())
 		//		{
-		//			directorieslistBox.Items.Add(oCurrentDirectoryInfo.Name);
+		//			directorieslistBox.Items.Add(currentDirectoryInfo.Name);
 		//		}
 		//		// **************************************************
 
 		//		// **************************************************
 		//		filesListBox.Items.Clear();
 
-		//		foreach (System.IO.FileInfo oCurrentFileInfo in oDirectoryInfo.GetFiles())
+		//		foreach (System.IO.FileInfo currentFileInfo in directoryInfo.GetFiles())
 		//		{
-		//			filesListBox.Items.Add(oCurrentFileInfo.Name);
+		//			filesListBox.Items.Add(currentFileInfo.Name);
 		//		}
 		//		// **************************************************
 		//	}
@@ -104,17 +104,20 @@
 
 			if (directorieslistBox.SelectedItem.ToString() != "..")
 			{
+				//pathTextBox.Text =
+				//	string.Format(@"{0}\{1}",
+				//	pathTextBox.Text, directorieslistBox.SelectedItem);
+
 				pathTextBox.Text =
-					string.Format(@"{0}\{1}",
-					pathTextBox.Text, directorieslistBox.SelectedItem);
+					$"{ pathTextBox.Text }\\{ directorieslistBox.SelectedItem }";
 			}
 			else
 			{
-				int intIndex =
+				int index =
 					pathTextBox.Text.LastIndexOf("\\");
 
 				pathTextBox.Text =
-					pathTextBox.Text.Substring(startIndex: 0, length: intIndex);
+					pathTextBox.Text.Substring(startIndex: 0, length: index);
 			}
 
 			DisplayDirectoriesAndFiles();
@@ -124,7 +127,7 @@
 		{
 			try
 			{
-				System.IO.DirectoryInfo oDirectoryInfo =
+				System.IO.DirectoryInfo directoryInfo =
 					new System.IO.DirectoryInfo(path: pathTextBox.Text);
 
 				// **************************************************
@@ -136,18 +139,18 @@
 					directorieslistBox.Items.Add("..");
 				}
 
-				foreach (System.IO.DirectoryInfo oCurrentDirectoryInfo in oDirectoryInfo.GetDirectories())
+				foreach (System.IO.DirectoryInfo currentDirectoryInfo in directoryInfo.GetDirectories())
 				{
-					directorieslistBox.Items.Add(oCurrentDirectoryInfo.Name);
+					directorieslistBox.Items.Add(currentDirectoryInfo.Name);
 				}
 				// **************************************************
 
 				// **************************************************
 				filesListBox.Items.Clear();
 
-				foreach (System.IO.FileInfo oCurrentFileInfo in oDirectoryInfo.GetFiles())
+				foreach (System.IO.FileInfo currentFileInfo in directoryInfo.GetFiles())
 				{
-					filesListBox.Items.Add(oCurrentFileInfo.Name);
+					filesListBox.Items.Add(currentFileInfo.Name);
 				}
 				// **************************************************
 			}

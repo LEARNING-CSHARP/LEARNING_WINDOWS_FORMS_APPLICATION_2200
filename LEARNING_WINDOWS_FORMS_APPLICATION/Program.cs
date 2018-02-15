@@ -2,6 +2,10 @@
 {
 	static class Program
 	{
+		static Program()
+		{
+		}
+
 		[System.STAThread]
 		static void Main()
 		{

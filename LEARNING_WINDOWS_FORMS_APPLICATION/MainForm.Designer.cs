@@ -44,14 +44,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.pathTextBox.Location = new System.Drawing.Point(56, 12);
 			this.pathTextBox.Name = "pathTextBox";
-			this.pathTextBox.Size = new System.Drawing.Size(351, 23);
+			this.pathTextBox.Size = new System.Drawing.Size(365, 23);
 			this.pathTextBox.TabIndex = 1;
 			this.pathTextBox.Text = "C:\\Windows";
 			// 
 			// displayDirectoriesAndFilesButton
 			// 
 			this.displayDirectoriesAndFilesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.displayDirectoriesAndFilesButton.Location = new System.Drawing.Point(413, 12);
+			this.displayDirectoriesAndFilesButton.Location = new System.Drawing.Point(427, 12);
 			this.displayDirectoriesAndFilesButton.Name = "displayDirectoriesAndFilesButton";
 			this.displayDirectoriesAndFilesButton.Size = new System.Drawing.Size(75, 23);
 			this.displayDirectoriesAndFilesButton.TabIndex = 2;
@@ -67,7 +67,7 @@
 			this.directorieslistBox.ItemHeight = 16;
 			this.directorieslistBox.Location = new System.Drawing.Point(12, 41);
 			this.directorieslistBox.Name = "directorieslistBox";
-			this.directorieslistBox.Size = new System.Drawing.Size(476, 148);
+			this.directorieslistBox.Size = new System.Drawing.Size(490, 148);
 			this.directorieslistBox.TabIndex = 3;
 			this.directorieslistBox.DoubleClick += new System.EventHandler(this.directorieslistBox_DoubleClick);
 			// 
@@ -80,7 +80,7 @@
 			this.filesListBox.ItemHeight = 16;
 			this.filesListBox.Location = new System.Drawing.Point(12, 195);
 			this.filesListBox.Name = "filesListBox";
-			this.filesListBox.Size = new System.Drawing.Size(476, 212);
+			this.filesListBox.Size = new System.Drawing.Size(490, 132);
 			this.filesListBox.TabIndex = 4;
 			// 
 			// MainForm
@@ -88,7 +88,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(500, 428);
+			this.ClientSize = new System.Drawing.Size(514, 361);
 			this.Controls.Add(this.filesListBox);
 			this.Controls.Add(this.directorieslistBox);
 			this.Controls.Add(this.displayDirectoriesAndFilesButton);
@@ -96,6 +96,7 @@
 			this.Controls.Add(this.pathLabel);
 			this.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Margin = new System.Windows.Forms.Padding(4);
+			this.MinimumSize = new System.Drawing.Size(530, 400);
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Main";
@@ -112,7 +113,5 @@
 		private System.Windows.Forms.Button displayDirectoriesAndFilesButton;
 		private System.Windows.Forms.ListBox directorieslistBox;
 		private System.Windows.Forms.ListBox filesListBox;
-
-
 	}
 }
