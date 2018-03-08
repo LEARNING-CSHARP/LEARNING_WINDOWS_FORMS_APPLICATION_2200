@@ -53,36 +53,36 @@
 			DisplayDirectoriesAndFiles();
 		}
 
-		//private void DisplayDirectoriesAndFiles()
-		//{
-		//	try
-		//	{
-		//		System.IO.DirectoryInfo directoryInfo =
-		//			new System.IO.DirectoryInfo(path: pathTextBox.Text);
+		private void DisplayDirectoriesAndFiles()
+		{
+			try
+			{
+				System.IO.DirectoryInfo directoryInfo =
+					new System.IO.DirectoryInfo(path: pathTextBox.Text);
 
-		//		// **************************************************
-		//		directorieslistBox.Items.Clear();
+				// **************************************************
+				directorieslistBox.Items.Clear();
 
-		//		foreach (System.IO.DirectoryInfo currentDirectoryInfo in directoryInfo.GetDirectories())
-		//		{
-		//			directorieslistBox.Items.Add(currentDirectoryInfo.Name);
-		//		}
-		//		// **************************************************
+				foreach (System.IO.DirectoryInfo currentDirectoryInfo in directoryInfo.GetDirectories())
+				{
+					directorieslistBox.Items.Add(currentDirectoryInfo.Name);
+				}
+				// **************************************************
 
-		//		// **************************************************
-		//		filesListBox.Items.Clear();
+				// **************************************************
+				filesListBox.Items.Clear();
 
-		//		foreach (System.IO.FileInfo currentFileInfo in directoryInfo.GetFiles())
-		//		{
-		//			filesListBox.Items.Add(currentFileInfo.Name);
-		//		}
-		//		// **************************************************
-		//	}
-		//	catch (System.Exception ex)
-		//	{
-		//		System.Windows.Forms.MessageBox.Show(ex.Message);
-		//	}
-		//}
+				foreach (System.IO.FileInfo currentFileInfo in directoryInfo.GetFiles())
+				{
+					filesListBox.Items.Add(currentFileInfo.Name);
+				}
+				// **************************************************
+			}
+			catch (System.Exception ex)
+			{
+				System.Windows.Forms.MessageBox.Show(ex.Message);
+			}
+		}
 
 		private void directorieslistBox_DoubleClick(object sender, System.EventArgs e)
 		{
@@ -123,41 +123,41 @@
 			DisplayDirectoriesAndFiles();
 		}
 
-		private void DisplayDirectoriesAndFiles()
-		{
-			try
-			{
-				System.IO.DirectoryInfo directoryInfo =
-					new System.IO.DirectoryInfo(path: pathTextBox.Text);
+		//private void DisplayDirectoriesAndFiles()
+		//{
+		//	try
+		//	{
+		//		System.IO.DirectoryInfo directoryInfo =
+		//			new System.IO.DirectoryInfo(path: pathTextBox.Text);
 
-				// **************************************************
-				directorieslistBox.Items.Clear();
+		//		// **************************************************
+		//		directorieslistBox.Items.Clear();
 
-				// اگر در داخل یک پوشه بودیم
-				if (pathTextBox.Text.Length > 3)
-				{
-					directorieslistBox.Items.Add("..");
-				}
+		//		// اگر در داخل یک پوشه بودیم
+		//		if (pathTextBox.Text.Length > 3)
+		//		{
+		//			directorieslistBox.Items.Add("..");
+		//		}
 
-				foreach (System.IO.DirectoryInfo currentDirectoryInfo in directoryInfo.GetDirectories())
-				{
-					directorieslistBox.Items.Add(currentDirectoryInfo.Name);
-				}
-				// **************************************************
+		//		foreach (System.IO.DirectoryInfo currentDirectoryInfo in directoryInfo.GetDirectories())
+		//		{
+		//			directorieslistBox.Items.Add(currentDirectoryInfo.Name);
+		//		}
+		//		// **************************************************
 
-				// **************************************************
-				filesListBox.Items.Clear();
+		//		// **************************************************
+		//		filesListBox.Items.Clear();
 
-				foreach (System.IO.FileInfo currentFileInfo in directoryInfo.GetFiles())
-				{
-					filesListBox.Items.Add(currentFileInfo.Name);
-				}
-				// **************************************************
-			}
-			catch (System.Exception ex)
-			{
-				System.Windows.Forms.MessageBox.Show(ex.Message);
-			}
-		}
+		//		foreach (System.IO.FileInfo currentFileInfo in directoryInfo.GetFiles())
+		//		{
+		//			filesListBox.Items.Add(currentFileInfo.Name);
+		//		}
+		//		// **************************************************
+		//	}
+		//	catch (System.Exception ex)
+		//	{
+		//		System.Windows.Forms.MessageBox.Show(ex.Message);
+		//	}
+		//}
 	}
 }
