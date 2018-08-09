@@ -25,7 +25,7 @@
 			this.pathLabel = new System.Windows.Forms.Label();
 			this.pathTextBox = new System.Windows.Forms.TextBox();
 			this.displayDirectoriesAndFilesButton = new System.Windows.Forms.Button();
-			this.directorieslistBox = new System.Windows.Forms.ListBox();
+			this.directoriesListBox = new System.Windows.Forms.ListBox();
 			this.filesListBox = new System.Windows.Forms.ListBox();
 			this.SuspendLayout();
 			// 
@@ -59,17 +59,17 @@
 			this.displayDirectoriesAndFilesButton.UseVisualStyleBackColor = true;
 			this.displayDirectoriesAndFilesButton.Click += new System.EventHandler(this.displayDirectoriesAndFilesButton_Click);
 			// 
-			// directorieslistBox
+			// directoriesListBox
 			// 
-			this.directorieslistBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.directoriesListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.directorieslistBox.FormattingEnabled = true;
-			this.directorieslistBox.ItemHeight = 16;
-			this.directorieslistBox.Location = new System.Drawing.Point(12, 41);
-			this.directorieslistBox.Name = "directorieslistBox";
-			this.directorieslistBox.Size = new System.Drawing.Size(490, 148);
-			this.directorieslistBox.TabIndex = 3;
-			this.directorieslistBox.DoubleClick += new System.EventHandler(this.directorieslistBox_DoubleClick);
+			this.directoriesListBox.FormattingEnabled = true;
+			this.directoriesListBox.ItemHeight = 16;
+			this.directoriesListBox.Location = new System.Drawing.Point(12, 41);
+			this.directoriesListBox.Name = "directoriesListBox";
+			this.directoriesListBox.Size = new System.Drawing.Size(490, 148);
+			this.directoriesListBox.TabIndex = 3;
+			this.directoriesListBox.DoubleClick += new System.EventHandler(this.directorieslistBox_DoubleClick);
 			// 
 			// filesListBox
 			// 
@@ -90,7 +90,7 @@
 			this.BackColor = System.Drawing.Color.White;
 			this.ClientSize = new System.Drawing.Size(514, 361);
 			this.Controls.Add(this.filesListBox);
-			this.Controls.Add(this.directorieslistBox);
+			this.Controls.Add(this.directoriesListBox);
 			this.Controls.Add(this.displayDirectoriesAndFilesButton);
 			this.Controls.Add(this.pathTextBox);
 			this.Controls.Add(this.pathLabel);
@@ -111,7 +111,7 @@
 		private System.Windows.Forms.Label pathLabel;
 		private System.Windows.Forms.TextBox pathTextBox;
 		private System.Windows.Forms.Button displayDirectoriesAndFilesButton;
-		private System.Windows.Forms.ListBox directorieslistBox;
+		private System.Windows.Forms.ListBox directoriesListBox;
 		private System.Windows.Forms.ListBox filesListBox;
 	}
 }

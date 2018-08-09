@@ -61,11 +61,11 @@
 		//			new System.IO.DirectoryInfo(path: pathTextBox.Text);
 
 		//		// **************************************************
-		//		directorieslistBox.Items.Clear();
+		//		directoriesListBox.Items.Clear();
 
 		//		foreach (System.IO.DirectoryInfo currentDirectoryInfo in directoryInfo.GetDirectories())
 		//		{
-		//			directorieslistBox.Items.Add(currentDirectoryInfo.Name);
+		//			directoriesListBox.Items.Add(currentDirectoryInfo.Name);
 		//		}
 		//		// **************************************************
 
@@ -84,53 +84,30 @@
 		//	}
 		//}
 
-		private void directorieslistBox_DoubleClick(object sender, System.EventArgs e)
-		{
-			if (directorieslistBox.SelectedItem == null)
-			{
-				System.Windows.Forms.MessageBox.Show
-					(text: "لطفا پوشه‌ای را انتخاب نمایید!",
-					caption: "خطا",
-					buttons: System.Windows.Forms.MessageBoxButtons.OK,
-					icon: System.Windows.Forms.MessageBoxIcon.Error,
-					defaultButton: System.Windows.Forms.MessageBoxDefaultButton.Button1,
-					options: System.Windows.Forms.MessageBoxOptions.RightAlign |
-					System.Windows.Forms.MessageBoxOptions.RtlReading);
-
-				directorieslistBox.Focus();
-
-				return;
-			}
-
-			if (directorieslistBox.SelectedItem.ToString() != "..")
-			{
-				//pathTextBox.Text =
-				//	string.Format(@"{0}\{1}",
-				//	pathTextBox.Text, directorieslistBox.SelectedItem);
-
-				pathTextBox.Text =
-					$"{ pathTextBox.Text }\\{ directorieslistBox.SelectedItem }";
-			}
-			else
-			{
-				int index =
-					pathTextBox.Text.LastIndexOf("\\");
-
-				pathTextBox.Text =
-					pathTextBox.Text.Substring(startIndex: 0, length: index);
-			}
-
-			DisplayDirectoriesAndFiles();
-		}
-
 		private void DisplayDirectoriesAndFiles()
 		{
 			// **************************************************
-			string path = pathTextBox.Text;
+			string path =
+				pathTextBox.Text;
 
-			if (path.Length == 2)
+			switch (path.Length)
 			{
-				path += "\\";
+				case 0:
+				{
+					return;
+				}
+
+				case 1:
+				{
+					path += @":\";
+					break;
+				}
+
+				case 2:
+				{
+					path += @"\";
+					break;
+				}
 			}
 			// **************************************************
 
@@ -140,17 +117,17 @@
 					new System.IO.DirectoryInfo(path: path);
 
 				// **************************************************
-				directorieslistBox.Items.Clear();
+				directoriesListBox.Items.Clear();
 
 				// اگر در داخل یک پوشه بودیم
 				if (path.Length > 3)
 				{
-					directorieslistBox.Items.Add("..");
+					directoriesListBox.Items.Add("..");
 				}
 
 				foreach (System.IO.DirectoryInfo currentDirectoryInfo in directoryInfo.GetDirectories())
 				{
-					directorieslistBox.Items.Add(currentDirectoryInfo.Name);
+					directoriesListBox.Items.Add(currentDirectoryInfo.Name);
 				}
 				// **************************************************
 
@@ -167,6 +144,64 @@
 			{
 				System.Windows.Forms.MessageBox.Show(ex.Message);
 			}
+		}
+
+		private void directorieslistBox_DoubleClick(object sender, System.EventArgs e)
+		{
+			if (directoriesListBox.SelectedItem == null)
+			{
+				System.Windows.Forms.MessageBox.Show
+					(text: "لطفا پوشه‌ای را انتخاب نمایید!",
+					caption: "خطا",
+					buttons: System.Windows.Forms.MessageBoxButtons.OK,
+					icon: System.Windows.Forms.MessageBoxIcon.Error,
+					defaultButton: System.Windows.Forms.MessageBoxDefaultButton.Button1,
+					options: System.Windows.Forms.MessageBoxOptions.RightAlign |
+					System.Windows.Forms.MessageBoxOptions.RtlReading);
+
+				directoriesListBox.Focus();
+
+				return;
+			}
+
+			if (directoriesListBox.SelectedItem.ToString() != "..")
+			{
+				//pathTextBox.Text =
+				//	string.Format(@"{0}\{1}",
+				//	pathTextBox.Text, directorieslistBox.SelectedItem);
+
+				//pathTextBox.Text =
+				//	$"{ pathTextBox.Text }\\{ directoriesListBox.SelectedItem }";
+
+				if (pathTextBox.Text.EndsWith(@"\"))
+				{
+					pathTextBox.Text =
+						$"{ pathTextBox.Text }{ directoriesListBox.SelectedItem }";
+				}
+				else
+				{
+					pathTextBox.Text =
+						$"{ pathTextBox.Text }\\{ directoriesListBox.SelectedItem }";
+				}
+			}
+			else
+			{
+				//int index =
+				//	pathTextBox.Text.LastIndexOf("\\");
+
+				int index =
+					pathTextBox.Text.LastIndexOf(@"\");
+
+				pathTextBox.Text =
+					pathTextBox.Text.Substring(startIndex: 0, length: index);
+
+				if (pathTextBox.Text.Length == 2)
+				{
+					pathTextBox.Text += @"\";
+				}
+			}
+
+			DisplayDirectoriesAndFiles();
 		}
 	}
 }
