@@ -1,13 +1,13 @@
 ﻿namespace LEARNING_WINDOWS_FORMS_APPLICATION
 {
-	static class Program
+	internal static class Program
 	{
 		static Program()
 		{
 		}
 
 		[System.STAThread]
-		static void Main()
+		internal static void Main()
 		{
 			// **************************************************
 			System.Windows.Forms.Application.EnableVisualStyles();

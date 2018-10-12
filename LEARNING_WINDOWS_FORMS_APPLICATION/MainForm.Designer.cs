@@ -57,7 +57,7 @@
 			this.displayDirectoriesAndFilesButton.TabIndex = 2;
 			this.displayDirectoriesAndFilesButton.Text = "...";
 			this.displayDirectoriesAndFilesButton.UseVisualStyleBackColor = true;
-			this.displayDirectoriesAndFilesButton.Click += new System.EventHandler(this.displayDirectoriesAndFilesButton_Click);
+			this.displayDirectoriesAndFilesButton.Click += new System.EventHandler(this.DisplayDirectoriesAndFilesButton_Click);
 			// 
 			// directoriesListBox
 			// 
@@ -69,7 +69,7 @@
 			this.directoriesListBox.Name = "directoriesListBox";
 			this.directoriesListBox.Size = new System.Drawing.Size(490, 148);
 			this.directoriesListBox.TabIndex = 3;
-			this.directoriesListBox.DoubleClick += new System.EventHandler(this.directorieslistBox_DoubleClick);
+			this.directoriesListBox.DoubleClick += new System.EventHandler(this.DirectorieslistBox_DoubleClick);
 			// 
 			// filesListBox
 			// 
@@ -80,7 +80,7 @@
 			this.filesListBox.ItemHeight = 16;
 			this.filesListBox.Location = new System.Drawing.Point(12, 195);
 			this.filesListBox.Name = "filesListBox";
-			this.filesListBox.Size = new System.Drawing.Size(490, 132);
+			this.filesListBox.Size = new System.Drawing.Size(490, 148);
 			this.filesListBox.TabIndex = 4;
 			// 
 			// MainForm

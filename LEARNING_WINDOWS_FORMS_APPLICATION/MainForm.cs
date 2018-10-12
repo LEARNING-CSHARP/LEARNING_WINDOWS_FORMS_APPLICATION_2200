@@ -11,7 +11,7 @@
 		{
 		}
 
-		private void displayDirectoriesAndFilesButton_Click(object sender, System.EventArgs e)
+		private void DisplayDirectoriesAndFilesButton_Click(object sender, System.EventArgs e)
 		{
 			if (string.IsNullOrWhiteSpace(pathTextBox.Text))
 			{
@@ -53,77 +53,15 @@
 			DisplayDirectoriesAndFiles();
 		}
 
-		//private void DisplayDirectoriesAndFiles()
-		//{
-		//	try
-		//	{
-		//		System.IO.DirectoryInfo directoryInfo =
-		//			new System.IO.DirectoryInfo(path: pathTextBox.Text);
-
-		//		// **************************************************
-		//		directoriesListBox.Items.Clear();
-
-		//		foreach (System.IO.DirectoryInfo currentDirectoryInfo in directoryInfo.GetDirectories())
-		//		{
-		//			directoriesListBox.Items.Add(currentDirectoryInfo.Name);
-		//		}
-		//		// **************************************************
-
-		//		// **************************************************
-		//		filesListBox.Items.Clear();
-
-		//		foreach (System.IO.FileInfo currentFileInfo in directoryInfo.GetFiles())
-		//		{
-		//			filesListBox.Items.Add(currentFileInfo.Name);
-		//		}
-		//		// **************************************************
-		//	}
-		//	catch (System.Exception ex)
-		//	{
-		//		System.Windows.Forms.MessageBox.Show(ex.Message);
-		//	}
-		//}
-
 		private void DisplayDirectoriesAndFiles()
 		{
-			// **************************************************
-			string path =
-				pathTextBox.Text;
-
-			switch (path.Length)
-			{
-				case 0:
-				{
-					return;
-				}
-
-				case 1:
-				{
-					path += @":\";
-					break;
-				}
-
-				case 2:
-				{
-					path += @"\";
-					break;
-				}
-			}
-			// **************************************************
-
 			try
 			{
 				System.IO.DirectoryInfo directoryInfo =
-					new System.IO.DirectoryInfo(path: path);
+					new System.IO.DirectoryInfo(path: pathTextBox.Text);
 
 				// **************************************************
 				directoriesListBox.Items.Clear();
-
-				// اگر در داخل یک پوشه بودیم
-				if (path.Length > 3)
-				{
-					directoriesListBox.Items.Add("..");
-				}
 
 				foreach (System.IO.DirectoryInfo currentDirectoryInfo in directoryInfo.GetDirectories())
 				{
@@ -146,7 +84,69 @@
 			}
 		}
 
-		private void directorieslistBox_DoubleClick(object sender, System.EventArgs e)
+		//private void DisplayDirectoriesAndFiles()
+		//{
+		//	// **************************************************
+		//	string path =
+		//		pathTextBox.Text;
+
+		//	switch (path.Length)
+		//	{
+		//		case 0:
+		//		{
+		//			return;
+		//		}
+
+		//		case 1:
+		//		{
+		//			path += @":\";
+		//			break;
+		//		}
+
+		//		case 2:
+		//		{
+		//			path += @"\";
+		//			break;
+		//		}
+		//	}
+		//	// **************************************************
+
+		//	try
+		//	{
+		//		System.IO.DirectoryInfo directoryInfo =
+		//			new System.IO.DirectoryInfo(path: path);
+
+		//		// **************************************************
+		//		directoriesListBox.Items.Clear();
+
+		//		// اگر در داخل یک پوشه بودیم
+		//		if (path.Length > 3)
+		//		{
+		//			directoriesListBox.Items.Add("..");
+		//		}
+
+		//		foreach (System.IO.DirectoryInfo currentDirectoryInfo in directoryInfo.GetDirectories())
+		//		{
+		//			directoriesListBox.Items.Add(currentDirectoryInfo.Name);
+		//		}
+		//		// **************************************************
+
+		//		// **************************************************
+		//		filesListBox.Items.Clear();
+
+		//		foreach (System.IO.FileInfo currentFileInfo in directoryInfo.GetFiles())
+		//		{
+		//			filesListBox.Items.Add(currentFileInfo.Name);
+		//		}
+		//		// **************************************************
+		//	}
+		//	catch (System.Exception ex)
+		//	{
+		//		System.Windows.Forms.MessageBox.Show(ex.Message);
+		//	}
+		//}
+
+		private void DirectorieslistBox_DoubleClick(object sender, System.EventArgs e)
 		{
 			if (directoriesListBox.SelectedItem == null)
 			{
@@ -166,13 +166,21 @@
 
 			if (directoriesListBox.SelectedItem.ToString() != "..")
 			{
+				//string test1 = "A\B\C\D"; // Note: Compile Error!
+				//string test2 = "A\\B\\C\\D";
+				//string test3 = @"A\B\C\D";
+
+				//pathTextBox.Text =
+				//	pathTextBox.Text + "\\" + directoriesListBox.SelectedItem;
+
 				//pathTextBox.Text =
 				//	string.Format(@"{0}\{1}",
-				//	pathTextBox.Text, directorieslistBox.SelectedItem);
+				//	pathTextBox.Text, directoriesListBox.SelectedItem);
 
 				//pathTextBox.Text =
 				//	$"{ pathTextBox.Text }\\{ directoriesListBox.SelectedItem }";
 
+				// خوشگل‌کاری
 				if (pathTextBox.Text.EndsWith(@"\"))
 				{
 					pathTextBox.Text =
@@ -186,15 +194,13 @@
 			}
 			else
 			{
-				//int index =
-				//	pathTextBox.Text.LastIndexOf("\\");
-
 				int index =
 					pathTextBox.Text.LastIndexOf(@"\");
 
 				pathTextBox.Text =
 					pathTextBox.Text.Substring(startIndex: 0, length: index);
 
+				// خوشگل‌کاری
 				if (pathTextBox.Text.Length == 2)
 				{
 					pathTextBox.Text += @"\";

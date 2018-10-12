@@ -1,3 +1,1 @@
-﻿This is test one!
-This is test two!
-This is test three!
+﻿Check the Readme.docx in LEARNING_CONCEPTS_0700!
